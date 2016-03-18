@@ -1,0 +1,57 @@
+html, body { 
+	margin:0; 
+	padding:0; 
+	overflow:hidden; 
+	background-color: green;
+}
+
+/* Hintergrund Gleise grau */
+.bg { 
+	stroke: #848484;
+	stroke-width: 40;
+	fill: transparent;
+}
+
+/* Eigenschaften der Vektorgrafik */
+svg { 
+	position:fixed; 
+	top:0; 
+	left:0; 
+	height:100%; 
+	width:100%;
+}
+
+/* gestrichelt fuer jedes Gleis rot */
+.track {
+	stroke: red;
+	stroke-width: 20;
+	fill: transparent;
+	stroke-dasharray: 15 1;
+    stroke-dashoffset: 5;
+}
+
+.sw {
+	stroke: #FF8000;
+	stroke-width: 20;
+	fill: transparent;
+	stroke-dasharray: 15 1;
+    stroke-dashoffset: 5;
+}
+
+
+.opacitySW {
+	stroke-opacity:0.5;
+}
+
+.signal {
+	stroke-width: 24;
+	fill: transparent;
+}
+
+.circleGreen {
+	fill: white;
+}
+
+.circleRed {
+	fill: white;
+}

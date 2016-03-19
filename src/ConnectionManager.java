@@ -12,8 +12,6 @@ import javax.websocket.Session;
 
 
 public class ConnectionManager {
-	
-	// Tmp Sessionlist fuer nicht angemeldete user
 	private static List<Session> sessionList = Collections.synchronizedList(new ArrayList<Session>());
 
     // Ausgabe aller aktiven Sessions

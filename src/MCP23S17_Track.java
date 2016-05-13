@@ -8,21 +8,14 @@ import com.pi4j.io.spi.SpiChannel;
 import java.io.IOException;
 
 public class MCP23S17_Track {
-
-    // create gpio controller
     final GpioController gpio = GpioFactory.getInstance();
 
     GpioPinDigitalOutput gpio_a[] = new GpioPinDigitalOutput[8];
     GpioPinDigitalOutput gpio_b[] = new GpioPinDigitalOutput[8];
     
-    public MCP23S17_Track() throws InterruptedException, IOException {
-        
-        System.out.println("MCP23017_Track");
-        
-        // create custom MCP23017 GPIO provider
+    public MCP23S17_Track() throws InterruptedException, IOException {        
         final MCP23S17GpioProvider gpioProvider = new MCP23S17GpioProvider(MCP23S17GpioProvider.DEFAULT_ADDRESS, SpiChannel.CS0);
         
-        // provision gpio output pins and make sure they are all LOW at startup
         gpio_a[0] = gpio.provisionDigitalOutputPin(gpioProvider, MCP23S17Pin.GPIO_A0, "MyOutput-A0", PinState.HIGH);
         gpio_a[1] = gpio.provisionDigitalOutputPin(gpioProvider, MCP23S17Pin.GPIO_A1, "MyOutput-A1", PinState.HIGH);
         gpio_a[2] = gpio.provisionDigitalOutputPin(gpioProvider, MCP23S17Pin.GPIO_A2, "MyOutput-A2", PinState.HIGH);
@@ -32,7 +25,6 @@ public class MCP23S17_Track {
         gpio_a[6] = gpio.provisionDigitalOutputPin(gpioProvider, MCP23S17Pin.GPIO_A6, "MyOutput-A6", PinState.HIGH);
         gpio_a[7] = gpio.provisionDigitalOutputPin(gpioProvider, MCP23S17Pin.GPIO_A7, "MyOutput-A7", PinState.HIGH);
 
-        // provision gpio output pins and make sure they are all LOW at startup 
         gpio_b[0] = gpio.provisionDigitalOutputPin(gpioProvider, MCP23S17Pin.GPIO_B0, "MyOutput-B0", PinState.HIGH);
         gpio_b[1] = gpio.provisionDigitalOutputPin(gpioProvider, MCP23S17Pin.GPIO_B1, "MyOutput-B1", PinState.LOW);
         gpio_b[2] = gpio.provisionDigitalOutputPin(gpioProvider, MCP23S17Pin.GPIO_B2, "MyOutput-B2", PinState.LOW);
@@ -43,7 +35,6 @@ public class MCP23S17_Track {
         gpio_b[7] = gpio.provisionDigitalOutputPin(gpioProvider, MCP23S17Pin.GPIO_B7, "MyOutput-B7", PinState.LOW);
     }
 
-    // Ein
     public void setActive(int i) {
         if(i < 8) {
             gpio.setState(false, gpio_a[i]);
@@ -52,7 +43,6 @@ public class MCP23S17_Track {
         }
     }
 
-    // Aus
     public void setInActive(int i) {
         if(i < 8) {
             gpio.setState(true, gpio_a[i]);

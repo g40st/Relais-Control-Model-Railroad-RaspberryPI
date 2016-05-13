@@ -32,7 +32,7 @@ public class TrainEndpoint {
     private static final int TRACK4 = 3;
     private static final int TRACK5 = 4;
     private static final int TRACK6 = 5;
-    private static final int TRACK7 = 6;
+    private static final int TRACK7 = 6; 
     private static final int TRACK8 = 7;
     private static final int TRACK9 = 8;
 
@@ -53,7 +53,7 @@ public class TrainEndpoint {
         System.out.println("Nachricht von Client: " + jsonMessage);
         if(msgType == 1) {
             int msgLength = Integer.parseInt((String) jsonMessage.get("Length").toString());
-            if(msgLength == 6) {
+            if(msgLength == 1) {
                 String msgContent = (String) jsonMessage.get("Content").toString();
                 switch(msgContent) {
                     case "track1":
@@ -97,7 +97,7 @@ public class TrainEndpoint {
             }
         } else if(msgType == 2) {
             int msgLength = Integer.parseInt((String) jsonMessage.get("Length").toString());
-            if(msgLength == 7) {
+            if(msgLength == 1) {
                 String msgContent = (String) jsonMessage.get("Content").toString();
                 switch(msgContent) {
                     case "switch1":
@@ -128,7 +128,7 @@ public class TrainEndpoint {
             }
         } else if(msgType == 3) {
             int msgLength = Integer.parseInt((String) jsonMessage.get("Length").toString());
-            if(msgLength == 6) {
+            if(msgLength == 1) {
                 String msgContent = (String) jsonMessage.get("Content").toString();
                 if(msgContent.equals("signal")) {
                     trainSingleton.setSignalState();
@@ -171,7 +171,7 @@ public class TrainEndpoint {
     public JSONObject sendSwitchResponse(String msgContent, int i) {
         JSONObject trainSwitchList = new JSONObject();
         trainSwitchList.put("Type", "2");
-        trainSwitchList.put("Length", 1);
+        trainSwitchList.put("Length", "1");
         JSONArray switches = new JSONArray();
         JSONObject tmp = new JSONObject();
         tmp.put("Switch", msgContent);
@@ -188,15 +188,12 @@ public class TrainEndpoint {
                 try {
                     tempS.getBasicRemote().sendText(tmp.toJSONString());
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
         }
     }
 }
-
-
 
 class BroadcastThread extends Thread {
     private TrainEndpoint trainEndpoint;
@@ -206,11 +203,6 @@ class BroadcastThread extends Thread {
     
     @SuppressWarnings("unchecked")
     public void run() {
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("TrainBroadcastThread:");
-        ConnectionManager.printall();
-        System.out.println("---------------------------------------------------------------");
-
         JSONObject trainSwitchList = new JSONObject();
         trainSwitchList.put("Type", "2");
         trainSwitchList.put("Length", "6");

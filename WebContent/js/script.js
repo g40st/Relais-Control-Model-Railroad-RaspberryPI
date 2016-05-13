@@ -16,10 +16,11 @@ $(document).ready(function() {
 
     $(".trClick").click(function(event) {  
         var tmpTrack = event.target.getAttribute("class").split(" ");
+        // Nachricht an Server schicken
         var switchTrack = {
-        "Type": "1",
-        "Length" : tmpTrack[0].length,
-        "Content" : tmpTrack[0]
+            "Type": "1",
+            "Length" : "1",
+            "Content" : tmpTrack[0]
         };
         trainSocket.send(JSON.stringify(switchTrack));
     });
@@ -28,9 +29,9 @@ $(document).ready(function() {
         var tmpSwitch = event.target.getAttribute("class").split(" ");
         // Nachricht an Server schicken
         var switchChange = {
-        "Type": "2",
-        "Length" : tmpSwitch[0].length,
-        "Content" : tmpSwitch[0]
+            "Type": "2",
+            "Length" : "1",
+            "Content" : tmpSwitch[0]
         };
         trainSocket.send(JSON.stringify(switchChange));
     }); 
@@ -38,9 +39,9 @@ $(document).ready(function() {
     $(".sgClick").click(function(event) {  
         // Nachricht an Server schicken
         var signalChange = {
-        "Type": "3",
-        "Length" : "6",
-        "Content" : "signal"
+            "Type": "3",
+            "Length" : "1",
+            "Content" : "signal"
         };
         trainSocket.send(JSON.stringify(signalChange));
     });
@@ -82,7 +83,6 @@ function trainReceiveMessage(message) {
         };
     } else if(msgServer.Type == 3) {
         for (var i = 0; i < msgServer.Length; i++) {
-
             if(msgServer.Content[i].State) {
                 $(".circleGreen").css({ fill: "green" });
                 $(".circleRed").css({ fill: "white" });
@@ -98,12 +98,10 @@ function trainReceiveMessage(message) {
 
 function trackActive(tmpTrack) {
     $(tmpTrack).css({ stroke: "#40FF00" });
-
 }
 
 function trackInactive(tmpTrack) {
-    $(tmpTrack).css({ stroke: "red" });
-    
+    $(tmpTrack).css({ stroke: "red" });   
 }
 
 function switchLeft(tmpSwitchLeft, tmpSwitchStraight) {

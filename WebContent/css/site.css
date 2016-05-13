@@ -12,15 +12,6 @@ html, body {
 	fill: transparent;
 }
 
-/* Eigenschaften der Vektorgrafik */
-svg { 
-	position:fixed; 
-	top:0; 
-	left:0; 
-	height:100%; 
-	width:100%;
-}
-
 /* gestrichelt fuer jedes Gleis rot */
 .track {
 	stroke: red;
@@ -30,6 +21,15 @@ svg {
     stroke-dashoffset: 5;
 }
 
+/* Eigenschaften der Vektorgrafik */
+svg { 
+	position:fixed; 
+	top:0; 
+	left:0; 
+	height:100%; 
+	width:100%;
+}
+
 .sw {
 	stroke: #FF8000;
 	stroke-width: 20;
@@ -37,7 +37,6 @@ svg {
 	stroke-dasharray: 15 1;
     stroke-dashoffset: 5;
 }
-
 
 .opacitySW {
 	stroke-opacity:0.5;

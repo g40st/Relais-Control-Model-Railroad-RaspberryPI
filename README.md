@@ -37,7 +37,7 @@ apt-get install openjdk-8-jdk
    6) At the first deployment you have to deploy the .war file by hand. Use the build-in manager. This manager is avaliable under <IP_ADDRESS>:8080/manager/html. Then go to "WAR file to deploy" and select the .war file to deploy it.
 
 ## Using
-  Use your Browser and go to "http://<IP_ADDRESS>:8080/train/"
+  Use your browser and navigate to "http://<IP_ADDRESS>:8080/train/"
 
 ## Nice To Know
 
